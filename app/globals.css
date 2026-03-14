@@ -6,19 +6,16 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* PlantPal palette */
-  --color-pp-navy:      #2c314a;
-  --color-pp-teal:      #3ce2d7;
-  --color-pp-sky:       #1eabfc;
-  --color-pp-deep:      #02349d;
-  --color-pp-teal-dim:  #d0f7f5;
-  --color-pp-sky-dim:   #d0eeff;
-  --color-pp-deep-dim:  #dce4f9;
+  --color-pp-navy:     #2c314a;
+  --color-pp-navy-mid: #363c59;
+  --color-pp-teal:     #3ce2d7;
+  --color-pp-sky:      #1eabfc;
+  --color-pp-deep:     #02349d;
 }
 
 :root {
-  --background: #f4fafa;
-  --foreground: #2c314a;
+  --background: #2c314a;
+  --foreground: #ffffff;
 }
 
 body {

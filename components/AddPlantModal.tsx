@@ -45,68 +45,53 @@ export default function AddPlantModal({ onClose, onAdded }: Props) {
     onClose();
   }
 
+  const inputClass = "bg-pp-navy-mid border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-pp-teal w-full";
+
   return (
-    <div className="fixed inset-0 bg-pp-navy/60 flex items-end sm:items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl w-full max-w-md p-6 flex flex-col gap-4">
+    <div className="fixed inset-0 bg-black/70 flex items-end sm:items-center justify-center z-50 p-4">
+      <div className="bg-pp-navy border border-white/10 rounded-2xl w-full max-w-md p-6 flex flex-col gap-5">
         <div className="flex justify-between items-center">
-          <h2 className="text-lg font-semibold text-pp-navy">Add Plant</h2>
-          <button onClick={onClose} className="text-pp-navy/30 hover:text-pp-navy/60 text-xl leading-none">✕</button>
+          <h2 className="text-white font-bold text-xl tracking-tight">Add Plant</h2>
+          <button onClick={onClose} className="text-white/30 hover:text-white/70 text-lg leading-none transition-colors">✕</button>
         </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-          {/* Photo */}
+          {/* Photo picker */}
           <div
             onClick={() => fileRef.current?.click()}
-            className="w-full h-32 rounded-xl border-2 border-dashed border-pp-teal/40 flex items-center justify-center cursor-pointer hover:border-pp-teal transition-colors overflow-hidden"
+            className="w-full h-36 rounded-xl border border-dashed border-white/15 flex items-center justify-center cursor-pointer hover:border-pp-teal/50 transition-colors overflow-hidden relative"
           >
             {photo ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={photo} alt="plant" className="w-full h-full object-cover" />
             ) : (
-              <span className="text-sm text-pp-navy/40">📷 Add photo</span>
+              <span className="text-white/30 text-sm">📷 Add photo</span>
             )}
           </div>
           <input ref={fileRef} type="file" accept="image/*" capture="environment" className="hidden" onChange={handlePhoto} />
 
-          <input
-            required
-            placeholder="Plant name *"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="border border-pp-teal/30 rounded-xl px-3 py-2 text-sm text-pp-navy focus:outline-none focus:ring-2 focus:ring-pp-teal"
-          />
-          <input
-            placeholder="Species (optional)"
-            value={species}
-            onChange={(e) => setSpecies(e.target.value)}
-            className="border border-pp-teal/30 rounded-xl px-3 py-2 text-sm text-pp-navy focus:outline-none focus:ring-2 focus:ring-pp-teal"
-          />
+          <input required placeholder="Plant name *" value={name} onChange={(e) => setName(e.target.value)} className={inputClass} />
+          <input placeholder="Species (optional)" value={species} onChange={(e) => setSpecies(e.target.value)} className={inputClass} />
 
           <div className="flex items-center gap-3">
-            <label className="text-sm text-pp-navy/60 whitespace-nowrap">Water every</label>
+            <span className="text-white/40 text-sm whitespace-nowrap">Water every</span>
             <input
-              type="number"
-              min={1}
-              max={60}
-              value={wateringDays}
+              type="number" min={1} max={60} value={wateringDays}
               onChange={(e) => setWateringDays(Number(e.target.value))}
-              className="border border-pp-teal/30 rounded-xl px-3 py-2 text-sm text-pp-navy w-20 focus:outline-none focus:ring-2 focus:ring-pp-teal"
+              className="bg-pp-navy-mid border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white w-20 focus:outline-none focus:ring-2 focus:ring-pp-teal text-center"
             />
-            <span className="text-sm text-pp-navy/60">days</span>
+            <span className="text-white/40 text-sm">days</span>
           </div>
 
           <textarea
-            placeholder="Notes (optional)"
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-            rows={2}
-            className="border border-pp-teal/30 rounded-xl px-3 py-2 text-sm text-pp-navy focus:outline-none focus:ring-2 focus:ring-pp-teal resize-none"
+            placeholder="Notes (optional)" value={notes} onChange={(e) => setNotes(e.target.value)}
+            rows={2} className={`${inputClass} resize-none`}
           />
 
           <button
             type="submit"
             disabled={saving || !name.trim()}
-            className="bg-pp-teal hover:brightness-110 text-pp-navy rounded-xl py-2.5 font-semibold text-sm transition-all disabled:opacity-50"
+            className="bg-pp-teal hover:brightness-110 text-pp-navy rounded-xl py-3 font-bold text-sm tracking-wide transition-all disabled:opacity-40 mt-1"
           >
             {saving ? "Saving..." : "Add Plant"}
           </button>
