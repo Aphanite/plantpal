@@ -28,17 +28,17 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-background">
       {/* Header */}
-      <header className="bg-white border-b border-gray-100 sticky top-0 z-30">
+      <header className="bg-pp-navy sticky top-0 z-30">
         <div className="max-w-2xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-2xl">🌿</span>
-            <h1 className="text-xl font-bold text-gray-900">PlantPal</h1>
+            <h1 className="text-xl font-bold text-white">PlantPal</h1>
           </div>
           <button
             onClick={() => setShowAdd(true)}
-            className="bg-green-500 hover:bg-green-600 text-white rounded-xl px-4 py-2 text-sm font-medium transition-colors"
+            className="bg-pp-teal hover:brightness-110 text-pp-navy rounded-xl px-4 py-2 text-sm font-semibold transition-all"
           >
             + Add Plant
           </button>
@@ -48,14 +48,14 @@ export default function Home() {
       {/* Content */}
       <div className="max-w-2xl mx-auto px-4 py-6">
         {loading ? (
-          <div className="text-center text-gray-400 py-20">Loading...</div>
+          <div className="text-center text-pp-navy/40 py-20">Loading...</div>
         ) : plants.length === 0 ? (
           <div className="text-center py-20 flex flex-col items-center gap-4">
             <span className="text-6xl">🌱</span>
-            <p className="text-gray-500">No plants yet. Add your first one!</p>
+            <p className="text-pp-navy/60">No plants yet. Add your first one!</p>
             <button
               onClick={() => setShowAdd(true)}
-              className="bg-green-500 hover:bg-green-600 text-white rounded-xl px-6 py-2.5 font-medium transition-colors"
+              className="bg-pp-teal hover:brightness-110 text-pp-navy rounded-xl px-6 py-2.5 font-semibold transition-all"
             >
               Add Plant
             </button>
@@ -75,7 +75,6 @@ export default function Home() {
         )}
       </div>
 
-      {/* Modals */}
       {showAdd && (
         <AddPlantModal onClose={() => setShowAdd(false)} onAdded={loadPlants} />
       )}

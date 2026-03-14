@@ -24,42 +24,46 @@ export default function PlantCard({ plant, onDiagnose, onDelete, onRefresh }: Pr
   }
 
   return (
-    <div className={`rounded-2xl border bg-white shadow-sm overflow-hidden flex flex-col ${due ? "border-amber-400" : "border-gray-200"}`}>
+    <div className={`rounded-2xl border bg-white shadow-sm overflow-hidden flex flex-col ${due ? "border-pp-sky" : "border-pp-teal/30"}`}>
       {plant.photo ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={plant.photo} alt={plant.name} className="w-full h-40 object-cover" />
       ) : (
-        <div className="w-full h-40 bg-green-50 flex items-center justify-center text-5xl">🌱</div>
+        <div className="w-full h-40 bg-pp-teal-dim flex items-center justify-center text-5xl">🌱</div>
       )}
       <div className="p-4 flex flex-col gap-2 flex-1">
         <div>
-          <h3 className="font-semibold text-gray-900">{plant.name}</h3>
-          {plant.species && <p className="text-xs text-gray-500">{plant.species}</p>}
+          <h3 className="font-semibold text-pp-navy">{plant.name}</h3>
+          {plant.species && <p className="text-xs text-pp-navy/50">{plant.species}</p>}
         </div>
 
-        <div className={`text-xs rounded-lg px-2 py-1 w-fit font-medium ${due ? "bg-amber-100 text-amber-700" : "bg-green-100 text-green-700"}`}>
+        <div className={`text-xs rounded-lg px-2 py-1 w-fit font-medium ${
+          due
+            ? "bg-pp-sky text-white"
+            : "bg-pp-teal-dim text-pp-navy"
+        }`}>
           {due ? "💧 Needs water!" : `Next: ${next.toLocaleDateString()}`}
         </div>
 
-        {plant.notes && <p className="text-xs text-gray-500 line-clamp-2">{plant.notes}</p>}
+        {plant.notes && <p className="text-xs text-pp-navy/50 line-clamp-2">{plant.notes}</p>}
 
         <div className="flex gap-2 mt-auto pt-2">
           <button
             onClick={handleWater}
             disabled={watering}
-            className="flex-1 text-xs bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-lg px-3 py-1.5 font-medium transition-colors disabled:opacity-50"
+            className="flex-1 text-xs bg-pp-sky-dim hover:bg-pp-sky/20 text-pp-deep rounded-lg px-3 py-1.5 font-medium transition-colors disabled:opacity-50"
           >
             {watering ? "..." : "💧 Watered"}
           </button>
           <button
             onClick={() => onDiagnose(plant)}
-            className="flex-1 text-xs bg-green-100 hover:bg-green-200 text-green-700 rounded-lg px-3 py-1.5 font-medium transition-colors"
+            className="flex-1 text-xs bg-pp-teal-dim hover:bg-pp-teal/30 text-pp-navy rounded-lg px-3 py-1.5 font-medium transition-colors"
           >
             🔍 Diagnose
           </button>
           <button
             onClick={() => onDelete(plant.id)}
-            className="text-xs bg-red-50 hover:bg-red-100 text-red-500 rounded-lg px-3 py-1.5 transition-colors"
+            className="text-xs bg-red-50 hover:bg-red-100 text-red-400 rounded-lg px-3 py-1.5 transition-colors"
           >
             🗑
           </button>

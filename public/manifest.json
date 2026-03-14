@@ -4,8 +4,8 @@
   "description": "Your personal plant care assistant",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f9fafb",
-  "theme_color": "#22c55e",
+  "background_color": "#f4fafa",
+  "theme_color": "#2c314a",
   "orientation": "portrait",
   "icons": [
     {

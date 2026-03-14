@@ -51,7 +51,6 @@ export default function DiagnoseModal({ plant, onClose }: Props) {
         setResult(full);
       }
 
-      // Persist diagnosis
       const diagnosis: Diagnosis = {
         id: crypto.randomUUID(),
         plantId: plant.id,
@@ -68,23 +67,22 @@ export default function DiagnoseModal({ plant, onClose }: Props) {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-end sm:items-center justify-center z-50 p-4">
+    <div className="fixed inset-0 bg-pp-navy/60 flex items-end sm:items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl w-full max-w-lg p-6 flex flex-col gap-4 max-h-[90vh] overflow-y-auto">
         <div className="flex justify-between items-center">
-          <h2 className="text-lg font-semibold">Diagnose — {plant.name}</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl leading-none">✕</button>
+          <h2 className="text-lg font-semibold text-pp-navy">Diagnose — {plant.name}</h2>
+          <button onClick={onClose} className="text-pp-navy/30 hover:text-pp-navy/60 text-xl leading-none">✕</button>
         </div>
 
-        {/* Photo selector */}
         <div
           onClick={() => fileRef.current?.click()}
-          className="w-full h-48 rounded-xl border-2 border-dashed border-gray-200 flex items-center justify-center cursor-pointer hover:border-green-400 transition-colors overflow-hidden"
+          className="w-full h-48 rounded-xl border-2 border-dashed border-pp-teal/40 flex items-center justify-center cursor-pointer hover:border-pp-teal transition-colors overflow-hidden"
         >
           {photo ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={photo} alt="plant" className="w-full h-full object-cover" />
           ) : (
-            <span className="text-sm text-gray-400">📷 Tap to add / change photo</span>
+            <span className="text-sm text-pp-navy/40">📷 Tap to add / change photo</span>
           )}
         </div>
         <input ref={fileRef} type="file" accept="image/*" capture="environment" className="hidden" onChange={handlePhoto} />
@@ -92,7 +90,7 @@ export default function DiagnoseModal({ plant, onClose }: Props) {
         <button
           onClick={handleDiagnose}
           disabled={!photo || loading}
-          className="bg-green-500 hover:bg-green-600 text-white rounded-xl py-2.5 font-medium text-sm transition-colors disabled:opacity-50"
+          className="bg-pp-teal hover:brightness-110 text-pp-navy rounded-xl py-2.5 font-semibold text-sm transition-all disabled:opacity-50"
         >
           {loading ? "Analyzing..." : "🔍 Diagnose with AI"}
         </button>
@@ -102,10 +100,10 @@ export default function DiagnoseModal({ plant, onClose }: Props) {
         )}
 
         {result && (
-          <div className="bg-green-50 rounded-xl px-4 py-3 text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
-            <p className="font-semibold text-green-800 mb-2">AI Diagnosis</p>
+          <div className="bg-pp-teal-dim rounded-xl px-4 py-3 text-sm text-pp-navy whitespace-pre-wrap leading-relaxed">
+            <p className="font-semibold text-pp-deep mb-2">AI Diagnosis</p>
             {result}
-            {loading && <span className="inline-block w-1.5 h-4 bg-green-600 ml-1 animate-pulse" />}
+            {loading && <span className="inline-block w-1.5 h-4 bg-pp-sky ml-1 animate-pulse" />}
           </div>
         )}
       </div>
