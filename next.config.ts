@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Allow large base64 image payloads for plant photo diagnosis
+  experimental: {},
 };
 
 export default nextConfig;
